@@ -1,24 +1,70 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="ro">
 <head>
-<meta charset="UTF-8">
-<title>Rezervări Barber Salon</title>
-<link rel="manifest" href="manifest.json">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Rezervări BarberSalon</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<body style="font-family:Arial; padding:20px;">
+<body>
+  <main class="container">
+    <header>
+      <h1>Rezervări BarberSalon</h1>
+      <p class="lead">Alege serviciul, specialistul, data și ora. Dacă aplicația este instalată, poți deschide rezervarea direct în aplicație.</p>
+    </header>
 
-<h2>Rezervări Barber Salon</h2>
-<p>Bine ai venit! Alege cum vrei să continui:</p>
+    <section class="panel" id="choice-panel">
+      <div class="row">
+        <div class="col">
+          <h3>1. Alege serviciul</h3>
+          <div id="services" class="chips"></div>
+        </div>
+        <div class="col">
+          <h3>2. Alege specialist</h3>
+          <div id="specialists" class="chips"></div>
+        </div>
+      </div>
+    </section>
 
-<a href="booking.html">
-    <button style="padding:15px; font-size:18px;">
-        Deschide Formularul de Rezervare
-    </button>
-</a>
+    <section class="panel" id="calendar-panel">
+      <div class="calendar-header">
+        <button id="prevMonth" class="icon">&lt;</button>
+        <div id="monthLabel" class="monthLabel"></div>
+        <button id="nextMonth" class="icon">&gt;</button>
+      </div>
 
-<p style="margin-top:20px;">
-Dacă aplicația este instalată, accesând <b>https://x2Marian.github.io/booking-web</b> se va deschide automat aplicația.
-</p>
+      <div class="weekdays" id="weekdays"></div>
+      <div id="calendar" class="calendar-grid"></div>
+    </section>
 
+    <section class="panel" id="times-panel">
+      <h3>Ore disponibile</h3>
+      <div id="times" class="chips"></div>
+      <p id="noTimes" class="muted" style="display:none">Nu există ore libere pentru selecția curentă.</p>
+    </section>
+
+    <section class="panel" id="client-panel">
+      <h3>Date client</h3>
+      <label>Număr telefon
+        <input id="phone" placeholder="07xxxxxxxx" inputmode="tel" />
+      </label>
+      <label>Nume (opțional)
+        <input id="name" placeholder="Ion Popescu" />
+      </label>
+
+      <div class="actions">
+        <button id="btnWhatsApp" class="primary" disabled>Trimite pe WhatsApp</button>
+        <button id="btnOpenApp" class="secondary" disabled>Deschide în aplicație (dacă e instalată)</button>
+      </div>
+
+      <p id="status" class="muted"></p>
+    </section>
+
+    <footer class="footer">
+      <small>Pagina publicată pe GitHub Pages. Înlocuiește variabilele USER_GH și REPO în <code>script.js</code> înainte de publicare.</small>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
