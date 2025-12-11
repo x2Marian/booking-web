@@ -1,0 +1,8 @@
+{
+  "name": "BarberSalon Booking",
+  "short_name": "Booking",
+  "start_url": "/booking-web/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ff9800"
+}
