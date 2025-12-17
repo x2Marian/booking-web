@@ -1,70 +1,54 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Rezervări BarberSalon</title>
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8">
+<title>Rezervare Barber</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body { font-family: Arial; padding: 20px; }
+select, input, button {
+  width: 100%; padding: 10px; margin-top: 10px;
+}
+button { background: #111; color: #fff; border: none; }
+</style>
 </head>
 <body>
-  <main class="container">
-    <header>
-      <h1>Rezervări BarberSalon</h1>
-      <p class="lead">Alege serviciul, specialistul, data și ora. Dacă aplicația este instalată, poți deschide rezervarea direct în aplicație.</p>
-    </header>
 
-    <section class="panel" id="choice-panel">
-      <div class="row">
-        <div class="col">
-          <h3>1. Alege serviciul</h3>
-          <div id="services" class="chips"></div>
-        </div>
-        <div class="col">
-          <h3>2. Alege specialist</h3>
-          <div id="specialists" class="chips"></div>
-        </div>
-      </div>
-    </section>
+<h2>Rezervare Barber</h2>
 
-    <section class="panel" id="calendar-panel">
-      <div class="calendar-header">
-        <button id="prevMonth" class="icon">&lt;</button>
-        <div id="monthLabel" class="monthLabel"></div>
-        <button id="nextMonth" class="icon">&gt;</button>
-      </div>
+<select id="service">
+  <option value="1">Tuns</option>
+  <option value="2">Tuns + barbă</option>
+</select>
 
-      <div class="weekdays" id="weekdays"></div>
-      <div id="calendar" class="calendar-grid"></div>
-    </section>
+<select id="specialist">
+  <option value="1">Andrei</option>
+  <option value="2">Mihai</option>
+</select>
 
-    <section class="panel" id="times-panel">
-      <h3>Ore disponibile</h3>
-      <div id="times" class="chips"></div>
-      <p id="noTimes" class="muted" style="display:none">Nu există ore libere pentru selecția curentă.</p>
-    </section>
+<input type="date" id="date">
+<input type="time" id="time">
 
-    <section class="panel" id="client-panel">
-      <h3>Date client</h3>
-      <label>Număr telefon
-        <input id="phone" placeholder="07xxxxxxxx" inputmode="tel" />
-      </label>
-      <label>Nume (opțional)
-        <input id="name" placeholder="Ion Popescu" />
-      </label>
+<button onclick="openApp()">Rezervă</button>
 
-      <div class="actions">
-        <button id="btnWhatsApp" class="primary" disabled>Trimite pe WhatsApp</button>
-        <button id="btnOpenApp" class="secondary" disabled>Deschide în aplicație (dacă e instalată)</button>
-      </div>
+<script>
+function openApp() {
+  const s = document.getElementById("service").value;
+  const sp = document.getElementById("specialist").value;
+  const d = document.getElementById("date").value;
+  const t = document.getElementById("time").value;
 
-      <p id="status" class="muted"></p>
-    </section>
+  if (!d || !t) {
+    alert("Selectează data și ora");
+    return;
+  }
 
-    <footer class="footer">
-      <small>Pagina publicată pe GitHub Pages. Înlocuiește variabilele USER_GH și REPO în <code>script.js</code> înainte de publicare.</small>
-    </footer>
-  </main>
+  const deeplink =
+    `barberapp://booking?serviceId=${s}&specialistId=${sp}&date=${d}&time=${t}`;
 
-  <script src="script.js"></script>
+  window.location.href = deeplink;
+}
+</script>
+
 </body>
 </html>
